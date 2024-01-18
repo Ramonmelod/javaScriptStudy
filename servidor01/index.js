@@ -3,14 +3,17 @@ const app = express();
 const porta = 3000;
 const localHost = "localhost";
 const BASE_URL = "https://httpbin.org"; // site httpbin  - ele auxilia no teste de requisições e resposta http
+const database = require("./database");
 
-app.get("/", (req, res) => {
+app.use(express.json());
+
+app.get("/", async (req, res) => {
   console.log("Referer:", req.get("referer"));
   console.log("Content-Type: ", req.get("Content-Type"));
   console.log("User-Agent:", req.get("user-agent"));
   res.type("text/plain");
-
-  res.status(200).send("Página inicial");
+  const data = await database.redisQuery();
+  res.status(200).send(`Em nome está escrito ${data}`);
 });
 //--------------------------/get-----------------------------------------------------
 app.get("/get", async (req, res) => {
@@ -46,7 +49,7 @@ app.get("/getArgs", async (req, res) => {
   res.status(200).send(data);
 });
 //--------------------------/post-----------------------------------------------------
-app.get("/post", async (req, res) => {
+app.post("/post", async (req, res) => {
   const response = await fetch(BASE_URL + "/post", {
     method: "POST",
     body: "a=1", // payload do post
@@ -56,13 +59,22 @@ app.get("/post", async (req, res) => {
       "User-Agent": "FBI agent",
     },
   });
+  console.log("enviando post para httpbin");
   const data = await response.json();
 
   console.log(data);
 
   res.status(200).send(data);
 });
+//------------------------PostLocal-----------------------------------------------
+app.post("/postLocal", (req, res) => {
+  const { nome } = req.body;
 
+  console.log(nome);
+
+  database.redisWrite();
+  res.status(200).send(`Olá ${nome}! Jesus escrito em nome no redis`);
+});
 //----------------------- slow endpoint -------------------------------------------
 
 app.get("/slowendpoint", (req, res) => {

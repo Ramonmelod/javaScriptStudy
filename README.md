@@ -27,6 +27,7 @@ docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
 ### Redis
 
 - instalação redis no WSL2 do windows: https://developer.redis.com/create/windows/
+- o redis de preferência deve ser instalado dentro de um container docker. Exemplo de comando: docker run -d -p 6379:6379 redis:7.2.4-alpine (a versão é o parâmetro mais variável neste comando)
 - Comandos:
   set chave valor
   get chave (resposta = valor)

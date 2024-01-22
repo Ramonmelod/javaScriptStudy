@@ -1,5 +1,10 @@
 # Compilado estudos de um Servidor NODE
 
+### instruções básica
+
+- Para o acesso das rotas "/" e "/postLocal" é necessário que seja instanciado um container redis
+- Para o acesso do endPoint /carros basta rodar o arquivo index.js dentro da pasta servidor01 e abrir a rota http://localhost:3000/carros/{numero}. O numero deve ser digitado sem colchetes e deve ser de 1 a 3.
+
 ### Tecnologias abordadas:
 
 - Node + Express

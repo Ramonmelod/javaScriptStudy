@@ -31,6 +31,10 @@ docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
   set chave valor
   get chave (resposta = valor)
 
+#### Node-Redis
+
+- O redis-redis por padrão se conecta à porta 6379, de forma que é conveniente subir o container com o redis escutando na porta 6379, caso se deseje subir o redis-server em outra porta deve-se colocar esta opção de configuração dentro do construtor objeto createCliente()
+
 ### Jest
 
 - Comandos:

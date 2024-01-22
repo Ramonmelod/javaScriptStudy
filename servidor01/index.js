@@ -1,11 +1,33 @@
 const express = require("express");
+const { Router } = require("express");
 const app = express();
+const apiRouter = Router();
 const porta = 3000;
 const localHost = "localhost";
 const BASE_URL = "https://httpbin.org"; // site httpbin  - ele auxilia no teste de requisições e resposta http
 const database = require("./database");
+const { Carro } = require("./objetos");
 
 app.use(express.json());
+app.use("/carros", apiRouter);
+
+//-----------------------------apiRouter--------------------------------------------
+apiRouter.get("/:modelo", (req, res) => {
+  res.type("application/json");
+  let C = new Carro("Felix", req.params.modelo);
+  if (req.params.modelo > 0 && req.params.modelo < 4) {
+    res
+      .status(200)
+      .json(
+        `nome: ${C.getNome()}, modelo: ${C.modelo}, Velocidade Máxima: ${
+          C.velocidadeMax
+        },preço: ${C.preço} R$,`
+      );
+  } else {
+    res.status(400).send("entrada inválida");
+  }
+});
+//-----------------------------------------------------------------------------------
 
 app.get("/", async (req, res) => {
   console.log("Referer:", req.get("referer"));

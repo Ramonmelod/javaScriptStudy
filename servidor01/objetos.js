@@ -1,4 +1,4 @@
-class carro {
+class Carro {
   NumeroRodas = 4;
   constructor(pnome, tipo) {
     this.nome = pnome;
@@ -32,11 +32,11 @@ class carro {
     console.log("");
   }
 }
+/*
+let c2 = new Carro("Storm", 2);
+c2.infoCarro();*/
 
-let c2 = new carro("Storm", 2);
-c2.infoCarro();
-
-module.exports = { carro };
+module.exports = { Carro };
 
 //comando Ctrl + d seleciona várias linhas ao mesmo tempo e digita em todas elas de uma só vez
 //------------------------Class com construtor básico básico------------------------

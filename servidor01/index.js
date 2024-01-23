@@ -27,9 +27,9 @@ apiRouter.get("/:modelo", (req, res) => {
     res.status(400).send("entrada inválida");
   }
 });
-//-----------------------------------------------------------------------------------
+//-----------------------/consultaRedis-------------------------------------------------------
 
-app.get("/", async (req, res) => {
+app.get("/consultaRedis", async (req, res) => {
   console.log("Referer:", req.get("referer"));
   console.log("Content-Type: ", req.get("Content-Type"));
   console.log("User-Agent:", req.get("user-agent"));
@@ -37,6 +37,27 @@ app.get("/", async (req, res) => {
   const data = await database.redisQuery();
   res.status(200).send(`Em nome está escrito ${data}`);
 });
+
+//------------------------/PostLocal-----------------------------------------------
+app.post("/postLocal", (req, res) => {
+  const { nome } = req.body;
+
+  console.log(nome);
+
+  database.redisWrite();
+  res.status(200).send(`Olá ${nome}! Jesus escrito em nome no redis`);
+});
+
+//-----------------------/consultaPostgres-----------------------------------------
+app.get("/consultaPostgres", async (req, res) => {
+  console.log("Referer:", req.get("referer"));
+  console.log("Content-Type: ", req.get("Content-Type"));
+  console.log("User-Agent:", req.get("user-agent"));
+  res.type("text/plain");
+  const data = await database.query();
+  res.status(200).send(`Esta é a impressão do postgres${data}`);
+});
+
 //--------------------------/get-----------------------------------------------------
 app.get("/get", async (req, res) => {
   const response = await fetch(BASE_URL + "/get", {
@@ -88,15 +109,7 @@ app.post("/post", async (req, res) => {
 
   res.status(200).send(data);
 });
-//------------------------PostLocal-----------------------------------------------
-app.post("/postLocal", (req, res) => {
-  const { nome } = req.body;
 
-  console.log(nome);
-
-  database.redisWrite();
-  res.status(200).send(`Olá ${nome}! Jesus escrito em nome no redis`);
-});
 //----------------------- slow endpoint -------------------------------------------
 
 app.get("/slowendpoint", (req, res) => {

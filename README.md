@@ -28,8 +28,11 @@ docker stop [nomeContainer] -> para o container
 docker rm [nomeContainer] -> exclui o container
 
 docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
+
 ### Postgres
-- O redis de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
+
+- O redis de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
+
 ### Redis
 
 - instalação redis no WSL2 do windows: https://developer.redis.com/create/windows/

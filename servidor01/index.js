@@ -38,8 +38,8 @@ app.get("/consultaRedis", async (req, res) => {
   res.status(200).send(`Em nome está escrito ${data}`);
 });
 
-//------------------------/PostLocal-----------------------------------------------
-app.post("/postLocal", (req, res) => {
+//------------------------/postRedis-----------------------------------------------
+app.post("/postRedis", (req, res) => {
   const { nome } = req.body;
 
   console.log(nome);

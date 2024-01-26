@@ -51,3 +51,7 @@ docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
   jest -> executa todos os testes implementados
   jest --watch -> executa o inspecionamento em todos os arquivos alterados sempre que algum arquivo é salvo
   jest --watchAll -> executa o inspecionamento em todos os arquivos sempre que algum arquivo é salvo
+
+### Curl
+
+- Para fazer uma operação de post no endPoint /postRedis utilizar: curl -X POST "http://localhost:3000" -H "accept: application/json" -d "{\"nome\": \"Ramon\"}. Estas barras invertidas são necessárias no powershell

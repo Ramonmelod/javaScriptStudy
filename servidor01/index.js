@@ -5,9 +5,9 @@ const apiRouter = Router();
 const porta = 3000;
 const localHost = "localhost";
 const BASE_URL = "https://httpbin.org"; // site httpbin  - ele auxilia no teste de requisições e resposta http
-const database = require("./database");
+const database = require("./infra/database");
 const { Carro } = require("./objetos");
-
+const { Pessoa } = require("./infra/pessoaObjeto");
 app.use(express.json());
 app.use("/carros", apiRouter);
 
@@ -41,7 +41,7 @@ app.get("/consultaRedis", async (req, res) => {
 //------------------------/postRedis-----------------------------------------------
 app.post("/postRedis", async (req, res) => {
   const { nome } = req.body;
-
+  res.type("text/plain");
   console.log(nome);
 
   await database.redisWrite(nome);
@@ -56,7 +56,15 @@ app.get("/consultaPostgres", async (req, res) => {
   console.log("Content-Type: ", req.get("Content-Type"));
   console.log("User-Agent:", req.get("user-agent"));
   res.type("text/plain");
-  const data = await database.query();
+  const data = await database.queryPostgres();
+  res.status(200).send(`Esta é a impressão do postgres${data}`);
+});
+//-----------------------/postPostgres-----------------------------------------
+app.post("/postPostgres", async (req, res) => {
+  const { nome, idade } = req.body;
+  let p1 = new Pessoa(nome, idade);
+  res.type("text/plain");
+  const data = await database.writePostgres(p1.nome, p1.idade);
   res.status(200).send(`Esta é a impressão do postgres${data}`);
 });
 

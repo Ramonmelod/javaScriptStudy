@@ -32,6 +32,10 @@ docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
 ### Postgres
 
 - O redis de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
+- Para a construção do banco de dados utilizar o comando SQL: create table cadastroPessoas(
+  s_nome_cliente VARCHAR(50) NOT NULL,
+  i_pontuacao_listarecordistas int not null);
+- Comando para conectar com o postgresql-client:psql --host=localhost --username=postgres --port=5432 POSTGRES_PASSWORD=local_password
 
 ### Redis
 

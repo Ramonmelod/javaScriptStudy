@@ -18,11 +18,11 @@ const query = async () => {
   return res;
 };
 
-const redisWrite = async () => {
+const redisWrite = async (nomePessoa) => {
   const client = await createClient()
     .on("error", (err) => console.log("Redis Client Error", err))
     .connect();
-  await client.set("nome", "Jesus");
+  await client.set("nome", nomePessoa);
   await client.disconnect();
 };
 

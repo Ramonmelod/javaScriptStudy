@@ -39,13 +39,15 @@ app.get("/consultaRedis", async (req, res) => {
 });
 
 //------------------------/postRedis-----------------------------------------------
-app.post("/postRedis", (req, res) => {
+app.post("/postRedis", async (req, res) => {
   const { nome } = req.body;
 
   console.log(nome);
 
-  database.redisWrite();
-  res.status(200).send(`Olá ${nome}! Jesus está escrito em nome no redis`);
+  await database.redisWrite(nome);
+  res
+    .status(200)
+    .send(`Olá ${nome}! seu nome foi registrado. Consulte em /consultaRedis`);
 });
 
 //-----------------------/consultaPostgres-----------------------------------------

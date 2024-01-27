@@ -45,7 +45,7 @@ app.post("/postRedis", (req, res) => {
   console.log(nome);
 
   database.redisWrite();
-  res.status(200).send(`Olá ${nome}! Jesus escrito em nome no redis`);
+  res.status(200).send(`Olá ${nome}! Jesus está escrito em nome no redis`);
 });
 
 //-----------------------/consultaPostgres-----------------------------------------

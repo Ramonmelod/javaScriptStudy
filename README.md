@@ -54,4 +54,5 @@ docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
 
 ### Curl
 
-- Para fazer uma operação de post no endPoint /postRedis utilizar: curl -X POST "http://localhost:3000" -H "accept: application/json" -d "{\"nome\": \"Ramon\"}. Estas barras invertidas são necessárias no powershell
+- Para fazer uma operação de post no endPoint /postRedis pelo Comand prompt ou linux utilizando o curl utilizar: curl -X POST "http://localhost:3000" -H "accept: application/json" -d "{\"nome\": \"Ramon\"}. Estas barras invertidas são necessárias no comand prompt do windows.
+- Para fazer uma operação de post no endPoint /postRedis pelo powersheel utilizar: Invoke-WebRequest -Uri "http://localhost:3000/postRedis" -Method Post -Headers @{"accept"="application/json"} -Body '{"nome": "Ramon"}'. Obs: por padrão o powershell executa o Invoke-WebRequest no lugar do curl, pois no powershell curl é alias do Ivoke-WebRequest

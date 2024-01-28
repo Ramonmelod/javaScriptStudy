@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node index.js",
-    "services:up": "docker compose up -d",
+    "redis:up": "docker run -d -p 6379:6379 redis:7.2.4-alpine",
+    "postgres:up": "docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19",
+    "services:up": "npm run redis:up && npm run postgres:up",
     "services:down": "docker compose down",
     "services:stop": "docker compose stop",
     "test": "jest",

@@ -19,6 +19,7 @@ const queryPostgres = async () => {
 };
 
 const writePostgres = async (nome, idade) => {
+  // falta colocar os trys and catchs
   const client = new Client({
     host: "localhost",
     port: 5432,
@@ -27,10 +28,13 @@ const writePostgres = async (nome, idade) => {
     password: "local_password",
   });
   await client.connect();
-  //const sqlCode = INSERT INTO tipocliente (i_tipocliente_tipocliente, nome) VALUES (1, 'cliente-fixo');
-  const res = await client.query("SELECT $1::text as message", [
+  //const sqlCode = INSERT into cadastropessoas values('Ramon Melo',31);
+  const res = await client.query(
+    "INSERT into cadastropessoas values('Ramon Melo',31);"
+  );
+  /*const res = await client.query("SELECT $1::text as message", [
     "Hello world!",
-  ]);
+  ]);*/
   //console.log(res.rows[0].message); // Hello world!
   await client.end();
   return res;

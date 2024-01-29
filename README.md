@@ -5,10 +5,12 @@
 - Para o acesso das rotas "/" e "/postLocal" é necessário que seja instanciado um container redis
 - Para o acesso do endPoint /carros basta rodar o arquivo index.js dentro da pasta servidor01 e abrir a rota http://localhost:3000/carros/{numero}. O numero deve ser digitado sem colchetes e deve ser de 1 a 3.
 - Para rodar os containers do redis e do postgres pode se utilizar o comando "npm run service:up", que está automatizado no package.json
-- Após rodar os containers utilizar o postgresql-client para linux para criar tabela de cadastroPessoas com o seguinte comando SQL: create table cadastroPessoas(
-  s_nome_cadastroPessoas varchar(50) not null,
-  i_idade_cadastroPessoas int not null
-  );
+- Após rodar os containers utilizar o postgresql-client para linux para criar tabela de cadastroPessoas com o seguinte comando SQL: CREATE TABLE cadastroPessoas (
+  i_idpessoa_cadastroPessoas SERIAL PRIMARY KEY,
+  s_nome_cadastroPessoas VARCHAR(50) NOT NULL,
+  i_idade_cadastroPessoas INT NOT NULL
+);
+ - Caso o comando acima não seja criado não é possível fazer um post nos endPoints /postPostgres e /consultaPostgres  
 
 ### Tecnologias abordadas:
 
@@ -86,3 +88,6 @@ Connection: keep-alive
 Content-Length: 18
 
 {"nome":"Carlos"}
+
+
+

@@ -31,7 +31,7 @@ const writePostgres = async (nome, idade) => {
   await client.connect();
   //const sqlCode = INSERT into cadastropessoas values('Ramon Melo',31);
   const res = await client.query({
-    text: "INSERT into cadastropessoas values($1,$2);",
+    text: "INSERT into cadastropessoas (s_nome_cadastroPessoas, i_idade_cadastroPessoas) VALUES ($1,$2);",
     values: [nome, idade],
   });
   // "INSERT into cadastropessoas values('Alfredo',62);"

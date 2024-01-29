@@ -67,7 +67,11 @@ app.post("/postPostgres", async (req, res) => {
   console.log(p1.nome + ": " + p1.idade);
   res.type("text/plain");
   const data = await database.writePostgres(p1.nome, p1.idade);
-  res.status(200).send(`Esta é a impressão do postgres${data}`);
+  res
+    .status(200)
+    .send(
+      `Olá ${p1.nome}! Seu nome e idades foram cadastrados em nosso banco de dados. Obrigado!`
+    );
 });
 
 //--------------------------/get-----------------------------------------------------

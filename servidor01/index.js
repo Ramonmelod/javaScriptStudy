@@ -63,6 +63,7 @@ app.get("/consultaPostgres", async (req, res) => {
 app.post("/postPostgres", async (req, res) => {
   const { nome, idade } = req.body;
   let p1 = new Pessoa(nome, idade);
+  console.log(p1.nome + ": " + p1.idade);
   res.type("text/plain");
   const data = await database.writePostgres(p1.nome, p1.idade);
   res.status(200).send(`Esta é a impressão do postgres${data}`);

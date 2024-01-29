@@ -29,9 +29,11 @@ const writePostgres = async (nome, idade) => {
   });
   await client.connect();
   //const sqlCode = INSERT into cadastropessoas values('Ramon Melo',31);
-  const res = await client.query(
-    "INSERT into cadastropessoas values('Ramon Melo',31);"
-  );
+  const res = await client.query({
+    text: "INSERT into cadastropessoas values($1,$2);",
+    values: [nome, idade],
+  });
+  // "INSERT into cadastropessoas values('Alfredo',62);"
   /*const res = await client.query("SELECT $1::text as message", [
     "Hello world!",
   ]);*/

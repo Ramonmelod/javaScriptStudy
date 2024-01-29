@@ -62,3 +62,27 @@ docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
 
 - Para fazer uma operação de post no endPoint /postRedis pelo Comand prompt ou linux utilizando o curl utilizar: curl -X POST "http://localhost:3000" -H "accept: application/json" -d "{\"nome\": \"Ramon\"}. Estas barras invertidas são necessárias no comand prompt do windows.
 - Para fazer uma operação de post no endPoint /postRedis pelo powersheel utilizar: Invoke-WebRequest -Uri "http://localhost:3000/postRedis" -Method Post -Headers @{"Content-Type"="application/json"} -Body '{"nome": "Ramon"}'. Obs: por padrão o powershell executa o Invoke-WebRequest no lugar do curl, pois no powershell curl é alias do Ivoke-WebRequest
+
+### Telnet
+
+- Caso deseje fazer uma conexão via telnet usar comando: telnet localhost 3000. Este comando abrirá uma conexão tcp/ip. Com a conexão aberta, pode-se digitar o head e o body do protocolo HTTP como nos exemplos abaixo: 
+
+// para o endPoint consultaRedis 
+
+GET /consultaRedis HTTP/1.1
+Host: localhost:3000
+User-Agent: (nome do User-Agent)
+Accept: */*
+
+// para o endPoint postRedis
+
+POST /postRedis HTTP/1.1
+User-Agent: (nome do User-Agent)
+Content-Type: application/json
+Accept: */*
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 18
+
+{"nome":"Carlos"}

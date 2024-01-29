@@ -57,9 +57,10 @@ app.get("/consultaPostgres", async (req, res) => {
   console.log("User-Agent:", req.get("user-agent"));
   res.type("text/plain");
   const data = await database.queryPostgres();
-  res.status(200).send(`Esta é a impressão do postgres${data}`);
+  const result = JSON.stringify(data.rows); // converte o objeto em uma string json
+  res.status(200).send("postgres: " + result);
 });
-//-----------------------/postPostgres-----------------------------------------
+//-----------------------/postPostgres--------------------------------------------
 app.post("/postPostgres", async (req, res) => {
   const { nome, idade } = req.body;
   let p1 = new Pessoa(nome, idade);

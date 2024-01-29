@@ -1,6 +1,7 @@
 //import { Client } from "pg";
 const { Client } = require("pg");
 const { createClient } = require("redis");
+
 const queryPostgres = async () => {
   const client = new Client({
     host: "localhost",
@@ -10,9 +11,9 @@ const queryPostgres = async () => {
     password: "local_password",
   });
   await client.connect();
-  const res = await client.query("SELECT $1::text as message", [
-    "Hello world!",
-  ]);
+  const res = await client.query(
+    "SELECT * FROM cadastropessoas ORDER BY i_idade_cadastropessoas DESC LIMIT 10;"
+  );
   //console.log(res.rows[0].message); // Hello world!
   await client.end();
   return res;

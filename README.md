@@ -11,6 +11,7 @@
   i_idade_cadastroPessoas INT NOT NULL
 );
  - Caso o comando acima não seja criado não é possível fazer um post nos endPoints /postPostgres e /consultaPostgres  
+ - Para fazer um post em /postPostgres pode -se utilizar a ferramenta HTTPIE, por meio do comando: http POST http://localhost:3000/postpostgres Content-Type:application/json <<< '{"nome":"Ramon", "idade":31}' (o HTTPie pode ser instalado por meio do comando sudo apt install httpie) 
 
 ### Tecnologias abordadas:
 

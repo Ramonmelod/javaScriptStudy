@@ -70,7 +70,7 @@ app.post("/postPostgres", async (req, res) => {
   res
     .status(200)
     .send(
-      `Olá ${p1.nome}! Seu nome e idades foram cadastrados em nosso banco de dados. Obrigado!`
+      `Olá ${p1.nome}! Seu nome e idade foram cadastrados em nosso banco de dados. Obrigado!`
     );
 });
 

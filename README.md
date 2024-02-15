@@ -2,6 +2,7 @@
 
 ### instruções básica
 
+- Para o acesso do endPoint /carros é necessário que seja escolhido um modelo de carro, sendo que o número do modelo deve está entre 1 e 3 (ex: /carros/1). Pode se utilizar o HTTPie por meio do comando: http http://localhost:3000/carros/1  I
 - Para o acesso das rotas "/" e "/postLocal" é necessário que seja instanciado um container redis
 - Para o acesso do endPoint /carros basta rodar o arquivo index.js dentro da pasta servidor01 e abrir a rota http://localhost:3000/carros/{numero}. O numero deve ser digitado sem colchetes e deve ser de 1 a 3.
 - Para rodar os containers do redis e do postgres pode se utilizar o comando "npm run service:up", que está automatizado no package.json

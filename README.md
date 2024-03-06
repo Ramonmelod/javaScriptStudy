@@ -44,6 +44,17 @@ docker rm [nomeContainer] -> exclui o container
 
 docker rmi [nomeImage] -> remove a imagem docker colocada como parâmetro
 
+Para acessar o terminal bash de um dos containers docker exec -it <idcontainner> <bash/sh>
+
+para editar arquivos dentro do container é possível utilzar o vi
+
+Para rodar um container especifico a partir de uma imagem docker run -d --name api nome_da_imagem
+
+para encontrar o ip do container: docker inspect <nome_do_contêiner> 
+
+numero de conexões abertas contra o postgres: SELECT count(\*)::int FROM pg_stat_activity where datname = 'postgres'; (deve ser o nome da database)
+
+
 ### Postgres
 
 - O redis de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
@@ -96,14 +107,3 @@ Connection: keep-alive
 Content-Length: 18
 
 {"nome":"Carlos"}
-
-
-### Docker
-## instruções para a fase de desenvolvimento
-
-- Para acessar o terminal bash de um dos containers docker exec -it <idcontainner> <bash/sh>
-- para editar arquivos dentro do container é possível utilzar o vi
-- Para rodar um container especifico a partir de uma imagem docker run -d --name api nome_da_imagem
-- para encontrar o ip do container: docker inspect <nome_do_contêiner> 
-- numero de conexões abertas contra o postgres: SELECT count(\*)::int FROM pg_stat_activity where datname = 'postgres'; (deve ser o nome da database)
-

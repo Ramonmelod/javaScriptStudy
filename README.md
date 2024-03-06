@@ -20,6 +20,7 @@
 );
  - Caso o comando acima não seja criado não é possível fazer um post nos endPoints /postPostgres e /consultaPostgres  
  - Para fazer um post em /postPostgres pode -se utilizar a ferramenta HTTPIE, por meio do comando: http POST http://localhost:3000/postpostgres Content-Type:application/json <<< '{"nome":"Ramon", "idade":31}' (o HTTPie pode ser instalado por meio do comando sudo apt install httpie) 
+ - Para testar codigo de cookies rodar no terminal:node cookie.js e jogar no navegar endpoint: http://localhost:3000/setUserName?username=Seunome
 
 ### Tecnologias abordadas:
 

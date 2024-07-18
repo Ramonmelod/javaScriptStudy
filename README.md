@@ -59,8 +59,23 @@ numero de conexões abertas contra o postgres: SELECT count(\*)::int FROM pg_sta
 
 ### Postgresql
 
-- O Postgresql de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
-- Comando para conectar o postgresql-client ao banco de dados postgres:psql --host=localhost --username=postgres --port=5432 (após este comando o banco deve solicitar a senha de acesso que é:local_password)
+- O Postgresql de preferência deve ser instalado dentro de um container docker. Exemplo de comando:
+  
+```sh
+  docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19
+```
+  
+- Comando para conectar o postgresql-client ao banco de dados postgres:
+```sh
+  psql --host=localhost --username=postgres --port=5432 (após este comando o banco deve solicitar a senha de acesso que é:local_password)
+```
+
+  
+- If you want to access a database that you have created use the following comand:
+  
+```sh
+     psql --host=localhost --username=postgres --port=5432 -d `name_of_created_database`
+```
 
 ### Redis
 

@@ -57,9 +57,9 @@ para encontrar o ip do container: docker inspect <nome_do_contêiner>
 numero de conexões abertas contra o postgres: SELECT count(\*)::int FROM pg_stat_activity where datname = 'postgres'; (deve ser o nome da database)
 
 
-### Postgres
+### Postgresql
 
-- O redis de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
+- O Postgresql de preferência deve ser instalado dentro de um container docker. Exemplo de comando:docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=local_password postgres:16.1-alpine3.19 (necessário revisar este comando e o endpoint consultaPostgres)
 - Comando para conectar o postgresql-client ao banco de dados postgres:psql --host=localhost --username=postgres --port=5432 (após este comando o banco deve solicitar a senha de acesso que é:local_password)
 
 ### Redis
